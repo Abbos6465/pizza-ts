@@ -1,0 +1,42 @@
+@mixin font-face(
+  $family,
+  $path,
+  $weight: 400,
+  $format
+) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$path}') format($format);
+    font-weight: $weight;
+  }
+}
+
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin font-size($size: 16){
+  font-size: calc($size/16) + rem;
+}
+
+@mixin center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-colors($bg-color, $text-color, $border-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border-color: $border-color;
+}
+
+@mixin text-base{
+  @include font-size;
+  line-height: 20px;
+}
+
+@mixin transition-base{
+  transition: 0.3s all;
+}

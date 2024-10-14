@@ -1,0 +1,67 @@
+.header{
+  background-color: var(--white);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--soft-white);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo{
+    @include center;
+    column-gap: 17px;
+
+    &_icon{
+      @include size(38px);
+    }
+
+    &-title{
+      font-weight: 800;
+      @include font-size(24);
+      line-height: 30px;
+      letter-spacing: 0.01em;
+      color: var(--dark-gray);
+    }
+
+    &-text{
+      line-height: 20px;
+      color: var(--gray-neutral);
+    }
+  }
+
+  &-btn{
+    @include center;
+    column-gap: 13px;
+
+    &__content{
+      &-first{
+        position: relative;
+        padding-right: 14px;
+
+        &::after{
+          content: "";
+          position: absolute;
+          right: 0;
+          width: 1.5px;
+          height: 100%;
+          background-color: white;
+        }
+      }
+
+      &-last{
+        display: flex;
+        column-gap: 8px;
+      }
+    }
+
+    &__img{
+      @include size(18px);
+    }
+  }
+}

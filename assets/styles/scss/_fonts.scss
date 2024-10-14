@@ -1,0 +1,18 @@
+$montserrat-family: "Montserrat";
+$font-format: "truetype";
+
+$fonts: (
+        bold: 700,
+        semiBold: 600,
+        medium: 500,
+        regular: 400,
+);
+
+@each $style, $weight in $fonts {
+  @include font-face(
+     $montserrat-family,
+    "../../fonts/montserrat/#{$style}.ttf",
+    $weight,
+    $font-format
+  );
+}

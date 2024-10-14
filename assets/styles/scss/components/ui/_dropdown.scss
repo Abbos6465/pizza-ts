@@ -1,0 +1,65 @@
+.dropdown{
+  position: relative;
+  display: inline-block;
+
+  &-btn{
+    @include center;
+    column-gap: 7px;
+
+    &__arrow-icon{
+      width: 10px;
+      height: 5.62px;
+    }
+
+    &__text{
+      font-weight: 700;
+      @include font-size(14);
+      line-height: 17.05px;
+      letter-spacing: 0.015em;
+      color: var(--dark-slate);
+    }
+
+    &__active-text{
+      margin-left: 4px;
+      font-weight: 400;
+      color: var(--bright-orange);
+      padding-bottom: 1px;
+      border-bottom: 1px dashed var(--bright-orange);
+    }
+  }
+
+  &-menu{
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 8px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 12px 0;
+    box-shadow: 0 5px 15px 0 #00000017;
+
+    &__btn{
+      padding: 10px 14px;
+      min-width: 132px;
+      color: var(--black);
+      @include font-size(14);
+      font-weight: 500;
+      line-height: 17.05px;
+      letter-spacing: 0.015em;
+      text-align: left;
+      @include transition-base;
+
+      &--active, &:hover, &:focus{
+        background-color: var(--transparent-orange);
+        font-weight: 700;
+        color: var(--bright-orange);
+      }
+
+      &:focus{
+        outline-color: var(--bright-orange);
+      }
+    }
+  }
+}

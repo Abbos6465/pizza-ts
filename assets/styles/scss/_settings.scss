@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+}
+
+.main{
+  margin-top: 91px;
+}
+
+section{
+  padding: 40px 0;
+}
+
+input{
+
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  &[type="number"]::-ms-clear {
+    display: none;
+  }
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+button{
+  cursor: pointer;
+  border: inherit;
+  background-color: inherit;
+  outline-color: var(--bright-orange);
+  @include text-base;
+}
+
+ul{
+  list-style-type: none;
+}

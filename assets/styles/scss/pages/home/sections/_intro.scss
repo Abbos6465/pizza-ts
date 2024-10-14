@@ -1,0 +1,147 @@
+.intro {
+  background-color: white;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__filter {
+    &-btns {
+      display: flex;
+      align-items: center;
+      column-gap: 9px;
+    }
+
+    &-btn {
+      height: 46px;
+    }
+  }
+
+  &-title {
+    margin-top: 32px;
+    font-weight: 700;
+    @include font-size(32);
+    color: var(--black);
+    line-height: 38.98px;
+    letter-spacing: 0.01em;
+  }
+
+  &-body {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 65px 35px;
+  }
+
+  &__card {
+    text-align: center;
+
+    &-img {
+      @include size(260px);
+    }
+
+    &-title {
+      margin-top: 11px;
+      font-weight: 800;
+      @include font-size(20);
+      line-height: 24.36px;
+      letter-spacing: 0.01em;
+    }
+
+    &__box {
+      $space-x: 5.73px;
+      $space-y: 7px;
+
+      padding: $space-y $space-x;
+      background-color: var(--soft-gray);
+      border-radius: 10px;
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      row-gap: $space-y;
+
+      &-grid {
+        display: grid;
+        column-gap: $space-x;
+
+        &-column {
+          &-2 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          &-3 {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+      }
+
+      &-btn{
+        height: 32px;
+        padding: 12px;
+        border-radius: 5px;
+        @include font-size(14);
+        font-weight: 700;
+        line-height: 17.05px;
+        letter-spacing: 0.015em;
+        color: var(--dark-slate);
+        @include center;
+        @include transition-base;
+
+        &--active, &:hover, &:focus, &:active{
+          background-color: var(--white);
+          box-shadow: 0 2px 4px 0 #0000000A;
+        }
+      }
+    }
+
+    &-footer{
+      margin-top: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-subtitle{
+      @include font-size(20);
+      font-weight: 700;
+      line-height: 26.8px;
+      letter-spacing: 0.015em;
+      color: var(--black);
+    }
+
+    &__btn{
+      column-gap: 8px;
+
+      &-icon{
+        @include size(12px);
+      }
+
+      &:hover, &:focus, &:active &-icon{
+        path{
+          fill: var(--white);
+        }
+      }
+
+      &__circle{
+        @include center;
+        @include size(22px);
+        @include font-size(13);
+        line-height: 15.83px;
+        border-radius: 50%;
+        background-color: var(--bright-orange);
+        color: white;
+        padding: 3px 7px;
+        @include transition-base;
+      }
+
+      &:hover, &:focus, &:active{
+        .intro__card__btn__circle{
+          background-color: var(--white);
+          color: var(--bright-orange);
+        }
+      }
+    }
+  }
+}
