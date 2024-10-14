@@ -1,322 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Корзина</title>
-  <link
-      rel="stylesheet"
-      href="./assets/styles/css/style.css"
-  >
+	<meta charset="UTF-8">
+	<title>Корзина</title>
+	<link
+		rel="stylesheet"
+		href="./assets/styles/css/style.css"
+	>
 </head>
 <body>
-  <header class="header">
-    <div class="container header__container">
-      <a
-          href="./index.html"
-          class="header__logo"
-      >
-        <img
-            src="./assets/images/icons/logo.svg"
-            alt="logo"
-            class="header__logo-icon"
-        />
-        <div>
-          <h5 class="header__logo-title">
-              MAZZA PIZZA
-          </h5>
-          <p class="header__logo-text">
-            самая вкусная пицца во вселенной
-          </p>
-        </div>
-      </a>
-    </div>
-  </header>
-  <main class="main">
-    <section class="basket">
-      <div class="container basket__container">
-        <div class="basket-header">
-          <div class="basket-title-wrapper">
-            <img
-                src="./assets/images/icons/basket-dark-icon.svg"
-                alt="basket"
-                class="basket-logo"
-            />
-            <h3 class="basket-title">Корзина</h3>
-          </div>
-          <button class="basket__btn">
-            <img
-                src="./assets/images/icons/trash-icon.svg"
-                alt="trash"
-                class="basket__btn-icon"
-            />
-            <span class="basket__btn-text">
+<template id="basked--not-empty">
+	<div class="basket-header">
+		<div class="basket-title-wrapper">
+			<img
+				src="./assets/images/icons/basket-dark-icon.svg"
+				alt="basket"
+				class="basket-logo"
+			/>
+			<h3 class="basket-title">Корзина</h3>
+		</div>
+		<button class="basket__btn">
+			<img
+				src="./assets/images/icons/trash-icon.svg"
+				alt="trash"
+				class="basket__btn-icon"
+			/>
+			<span class="basket__btn-text">
               Очистить корзину
             </span>
-          </button>
-        </div>
-        <div class="basket-body">
-          <div class="basket__box">
-            <div class="basket__box-left">
-              <img
-                  src="./assets/images/pizzas/pizza-1.png"
-                  alt="Сырный цыпленок"
-                  class="basket__box-img"
-              />
-              <div class="basket__box-left__content">
-                <h6 class="basket__box-title">
-                  Сырный цыпленок
-                </h6>
-                <p class="basket__box-description">
-                  тонкое тесто, 26 см.
-                </p>
-              </div>
-            </div>
-            <div class="basket__box-right">
-              <div class="basket__box__action">
-                <button class="btn btn--outline basket__box__action-btn">
-                  <svg
-                      class="basket__box__action-btn__icon"
-                      width="10"
-                      height="2"
-                      viewBox="0 0 10 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                        d="M4.04019 0.0399933H8.84019C9.37035 0.0399933 9.80019 0.469833 9.80019 0.999993C9.80019 1.53015 9.37035 1.95999 8.84019 1.95999H4.04019H1.1602C0.630035 1.95999 0.200195 1.53015 0.200195 0.999993C0.200195 0.469833 0.630035 0.0399933 1.1602 0.0399933H4.04019Z"
-                        fill="#FE5F1E"
-                    />
-                  </svg>
-                </button>
-                <h6 class="basket__box-title">
-                  2
-                </h6>
-                <button class="btn btn--outline basket__box__action-btn">
-                  <svg
-                      class="basket__box__action-btn__icon"
-                      width="10"
-                      height="10"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path
-                          d="M8.84019 4.04001H5.96019V1.16001C5.96019 0.629852 5.53035 0.200012 5.00019 0.200012C4.47003 0.200012 4.04019 0.629852 4.04019 1.16001V4.04001H1.1602C0.630035 4.04001 0.200195 4.46985 0.200195 5.00001C0.200195 5.53017 0.630035 5.96001 1.1602 5.96001H4.04019V8.84001C4.04019 9.37017 4.47003 9.80001 5.00019 9.80001C5.53035 9.80001 5.96019 9.37017 5.96019 8.84001V5.96001H8.84019C9.37035 5.96001 9.80019 5.53017 9.80019 5.00001C9.80019 4.46985 9.37035 4.04001 8.84019 4.04001Z"
-                          fill="#EB5A1E"
-                      />
-                  </svg>
-                </button>
-              </div>
-              <h6 class="basket__box-title">
-                770 ₽
-              </h6>
-              <button class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn">
-                <svg
-                    class="basket__box__action-btn__icon"
-                    width="10"
-                    height="9"
-                    viewBox="0 0 10 9"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                      d="M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z"
-                      fill="#D0D0D0"
-                  />
-              </svg>
-              </button>
-            </div>
-          </div>
-          <div class="basket__box">
-            <div class="basket__box-left">
-              <img
-                  src="./assets/images/pizzas/pizza-2.png"
-                  alt="Креветки по-азиатски"
-                  class="basket__box-img"
-              />
-              <div class="basket__box-left__content">
-                <h6 class="basket__box-title">
-                  Креветки по-азиатски
-                </h6>
-                <p class="basket__box-description">
-                  толстое тесто, 40 см.
-                </p>
-              </div>
-            </div>
-            <div class="basket__box-right">
-              <div class="basket__box__action">
-                <button class="btn btn--outline basket__box__action-btn">
-                  <svg
-                      class="basket__box__action-btn__icon"
-                      width="10"
-                      height="2"
-                      viewBox="0 0 10 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                        d="M4.04019 0.0399933H8.84019C9.37035 0.0399933 9.80019 0.469833 9.80019 0.999993C9.80019 1.53015 9.37035 1.95999 8.84019 1.95999H4.04019H1.1602C0.630035 1.95999 0.200195 1.53015 0.200195 0.999993C0.200195 0.469833 0.630035 0.0399933 1.1602 0.0399933H4.04019Z"
-                        fill="#FE5F1E"
-                    />
-                  </svg>
-                </button>
-                <h6 class="basket__box-title">
-                  1
-                </h6>
-                <button class="btn btn--outline basket__box__action-btn">
-                  <svg
-                      class="basket__box__action-btn__icon"
-                      width="10"
-                      height="10"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path
-                          d="M8.84019 4.04001H5.96019V1.16001C5.96019 0.629852 5.53035 0.200012 5.00019 0.200012C4.47003 0.200012 4.04019 0.629852 4.04019 1.16001V4.04001H1.1602C0.630035 4.04001 0.200195 4.46985 0.200195 5.00001C0.200195 5.53017 0.630035 5.96001 1.1602 5.96001H4.04019V8.84001C4.04019 9.37017 4.47003 9.80001 5.00019 9.80001C5.53035 9.80001 5.96019 9.37017 5.96019 8.84001V5.96001H8.84019C9.37035 5.96001 9.80019 5.53017 9.80019 5.00001C9.80019 4.46985 9.37035 4.04001 8.84019 4.04001Z"
-                          fill="#EB5A1E"
-                      />
-                  </svg>
-                </button>
-              </div>
-              <h6 class="basket__box-title">
-                290 ₽
-              </h6>
-              <button class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn">
-                <svg
-                    class="basket__box__action-btn__icon"
-                    width="10"
-                    height="9"
-                    viewBox="0 0 10 9"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                      d="M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z"
-                      fill="#D0D0D0"
-                  />
-              </svg>
-              </button>
-            </div>
-          </div>
-          <div class="basket__box">
-            <div class="basket__box-left">
-              <img
-                  src="./assets/images/pizzas/pizza-3.png"
-                  alt="Чизбургер-пицца"
-                  class="basket__box-img"
-              />
-              <div class="basket__box-left__content">
-                <h6 class="basket__box-title">
-                  Чизбургер-пицца
-                </h6>
-                <p class="basket__box-description">
-                  тонкое тесто, 30 см.
-                </p>
-              </div>
-            </div>
-            <div class="basket__box-right">
-              <div class="basket__box__action">
-                <button class="btn btn--outline basket__box__action-btn">
-                  <svg
-                      class="basket__box__action-btn__icon"
-                      width="10"
-                      height="2"
-                      viewBox="0 0 10 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                        d="M4.04019 0.0399933H8.84019C9.37035 0.0399933 9.80019 0.469833 9.80019 0.999993C9.80019 1.53015 9.37035 1.95999 8.84019 1.95999H4.04019H1.1602C0.630035 1.95999 0.200195 1.53015 0.200195 0.999993C0.200195 0.469833 0.630035 0.0399933 1.1602 0.0399933H4.04019Z"
-                        fill="#FE5F1E"
-                    />
-                  </svg>
-                </button>
-                <h6 class="basket__box-title">
-                  3
-                </h6>
-                <button class="btn btn--outline basket__box__action-btn">
-                  <svg
-                      class="basket__box__action-btn__icon"
-                      width="10"
-                      height="10"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path
-                          d="M8.84019 4.04001H5.96019V1.16001C5.96019 0.629852 5.53035 0.200012 5.00019 0.200012C4.47003 0.200012 4.04019 0.629852 4.04019 1.16001V4.04001H1.1602C0.630035 4.04001 0.200195 4.46985 0.200195 5.00001C0.200195 5.53017 0.630035 5.96001 1.1602 5.96001H4.04019V8.84001C4.04019 9.37017 4.47003 9.80001 5.00019 9.80001C5.53035 9.80001 5.96019 9.37017 5.96019 8.84001V5.96001H8.84019C9.37035 5.96001 9.80019 5.53017 9.80019 5.00001C9.80019 4.46985 9.37035 4.04001 8.84019 4.04001Z"
-                          fill="#EB5A1E"
-                      />
-                  </svg>
-                </button>
-              </div>
-              <h6 class="basket__box-title">
-                350 ₽
-              </h6>
-              <button class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn">
-                <svg
-                    class="basket__box__action-btn__icon"
-                    width="10"
-                    height="9"
-                    viewBox="0 0 10 9"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                      d="M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z"
-                      fill="#D0D0D0"
-                  />
-              </svg>
-              </button>
-            </div>
-          </div>
+		</button>
+	</div>
+	<div class="basket-body">
+		<div class="basket__box">
+			<div class="basket__box-left">
+				<img
+					src="./assets/images/pizzas/pizza-1.png"
+					alt="Сырный цыпленок"
+					class="basket__box-img"
+				/>
+				<div class="basket__box-left__content">
+					<h6 class="basket__box-title">
+						Сырный цыпленок
+					</h6>
+					<p class="basket__box-description">
+						тонкое тесто, 26 см.
+					</p>
+				</div>
+			</div>
+			<div class="basket__box-right">
+				<div class="basket__box__action">
+					<button class="btn btn--outline basket__box__action-btn">
+						<svg
+							class="basket__box__action-btn__icon"
+							width="10"
+							height="2"
+							viewBox="0 0 10 2"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M4.04019 0.0399933H8.84019C9.37035 0.0399933 9.80019 0.469833 9.80019 0.999993C9.80019 1.53015 9.37035 1.95999 8.84019 1.95999H4.04019H1.1602C0.630035 1.95999 0.200195 1.53015 0.200195 0.999993C0.200195 0.469833 0.630035 0.0399933 1.1602 0.0399933H4.04019Z"
+								fill="#FE5F1E"
+							/>
+						</svg>
+					</button>
+					<h6 class="basket__box-title">
+						2
+					</h6>
+					<button class="btn btn--outline basket__box__action-btn">
+						<svg
+							class="basket__box__action-btn__icon"
+							width="10"
+							height="10"
+							viewBox="0 0 10 10"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M8.84019 4.04001H5.96019V1.16001C5.96019 0.629852 5.53035 0.200012 5.00019 0.200012C4.47003 0.200012 4.04019 0.629852 4.04019 1.16001V4.04001H1.1602C0.630035 4.04001 0.200195 4.46985 0.200195 5.00001C0.200195 5.53017 0.630035 5.96001 1.1602 5.96001H4.04019V8.84001C4.04019 9.37017 4.47003 9.80001 5.00019 9.80001C5.53035 9.80001 5.96019 9.37017 5.96019 8.84001V5.96001H8.84019C9.37035 5.96001 9.80019 5.53017 9.80019 5.00001C9.80019 4.46985 9.37035 4.04001 8.84019 4.04001Z"
+								fill="#EB5A1E"
+							/>
+						</svg>
+					</button>
+				</div>
+				<h6 class="basket__box-title">
+					770 ₽
+				</h6>
+				<button class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn">
+					<svg
+						class="basket__box__action-btn__icon"
+						width="10"
+						height="9"
+						viewBox="0 0 10 9"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z"
+							fill="#D0D0D0"
+						/>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<div class="basket__box">
+			<div class="basket__box-left">
+				<img
+					src="./assets/images/pizzas/pizza-2.png"
+					alt="Креветки по-азиатски"
+					class="basket__box-img"
+				/>
+				<div class="basket__box-left__content">
+					<h6 class="basket__box-title">
+						Креветки по-азиатски
+					</h6>
+					<p class="basket__box-description">
+						толстое тесто, 40 см.
+					</p>
+				</div>
+			</div>
+			<div class="basket__box-right">
+				<div class="basket__box__action">
+					<button class="btn btn--outline basket__box__action-btn">
+						<svg
+							class="basket__box__action-btn__icon"
+							width="10"
+							height="2"
+							viewBox="0 0 10 2"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M4.04019 0.0399933H8.84019C9.37035 0.0399933 9.80019 0.469833 9.80019 0.999993C9.80019 1.53015 9.37035 1.95999 8.84019 1.95999H4.04019H1.1602C0.630035 1.95999 0.200195 1.53015 0.200195 0.999993C0.200195 0.469833 0.630035 0.0399933 1.1602 0.0399933H4.04019Z"
+								fill="#FE5F1E"
+							/>
+						</svg>
+					</button>
+					<h6 class="basket__box-title">
+						1
+					</h6>
+					<button class="btn btn--outline basket__box__action-btn">
+						<svg
+							class="basket__box__action-btn__icon"
+							width="10"
+							height="10"
+							viewBox="0 0 10 10"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M8.84019 4.04001H5.96019V1.16001C5.96019 0.629852 5.53035 0.200012 5.00019 0.200012C4.47003 0.200012 4.04019 0.629852 4.04019 1.16001V4.04001H1.1602C0.630035 4.04001 0.200195 4.46985 0.200195 5.00001C0.200195 5.53017 0.630035 5.96001 1.1602 5.96001H4.04019V8.84001C4.04019 9.37017 4.47003 9.80001 5.00019 9.80001C5.53035 9.80001 5.96019 9.37017 5.96019 8.84001V5.96001H8.84019C9.37035 5.96001 9.80019 5.53017 9.80019 5.00001C9.80019 4.46985 9.37035 4.04001 8.84019 4.04001Z"
+								fill="#EB5A1E"
+							/>
+						</svg>
+					</button>
+				</div>
+				<h6 class="basket__box-title">
+					290 ₽
+				</h6>
+				<button class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn">
+					<svg
+						class="basket__box__action-btn__icon"
+						width="10"
+						height="9"
+						viewBox="0 0 10 9"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z"
+							fill="#D0D0D0"
+						/>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<div class="basket__box">
+			<div class="basket__box-left">
+				<img
+					src="./assets/images/pizzas/pizza-3.png"
+					alt="Чизбургер-пицца"
+					class="basket__box-img"
+				/>
+				<div class="basket__box-left__content">
+					<h6 class="basket__box-title">
+						Чизбургер-пицца
+					</h6>
+					<p class="basket__box-description">
+						тонкое тесто, 30 см.
+					</p>
+				</div>
+			</div>
+			<div class="basket__box-right">
+				<div class="basket__box__action">
+					<button class="btn btn--outline basket__box__action-btn">
+						<svg
+							class="basket__box__action-btn__icon"
+							width="10"
+							height="2"
+							viewBox="0 0 10 2"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M4.04019 0.0399933H8.84019C9.37035 0.0399933 9.80019 0.469833 9.80019 0.999993C9.80019 1.53015 9.37035 1.95999 8.84019 1.95999H4.04019H1.1602C0.630035 1.95999 0.200195 1.53015 0.200195 0.999993C0.200195 0.469833 0.630035 0.0399933 1.1602 0.0399933H4.04019Z"
+								fill="#FE5F1E"
+							/>
+						</svg>
+					</button>
+					<h6 class="basket__box-title">
+						3
+					</h6>
+					<button class="btn btn--outline basket__box__action-btn">
+						<svg
+							class="basket__box__action-btn__icon"
+							width="10"
+							height="10"
+							viewBox="0 0 10 10"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M8.84019 4.04001H5.96019V1.16001C5.96019 0.629852 5.53035 0.200012 5.00019 0.200012C4.47003 0.200012 4.04019 0.629852 4.04019 1.16001V4.04001H1.1602C0.630035 4.04001 0.200195 4.46985 0.200195 5.00001C0.200195 5.53017 0.630035 5.96001 1.1602 5.96001H4.04019V8.84001C4.04019 9.37017 4.47003 9.80001 5.00019 9.80001C5.53035 9.80001 5.96019 9.37017 5.96019 8.84001V5.96001H8.84019C9.37035 5.96001 9.80019 5.53017 9.80019 5.00001C9.80019 4.46985 9.37035 4.04001 8.84019 4.04001Z"
+								fill="#EB5A1E"
+							/>
+						</svg>
+					</button>
+				</div>
+				<h6 class="basket__box-title">
+					350 ₽
+				</h6>
+				<button class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn">
+					<svg
+						class="basket__box__action-btn__icon"
+						width="10"
+						height="9"
+						viewBox="0 0 10 9"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z"
+							fill="#D0D0D0"
+						/>
+					</svg>
+				</button>
+			</div>
+		</div>
 
-        </div>
-        <div class="basket-footer">
-          <div class="basket-footer__item">
-            <p class="basket-footer__text">
-              Всего пицц:
-              <strong class="basket-footer__text--bold">
-                3 шт.
-              </strong>
-            </p>
-            <p class="basket-footer__text">
-             Сумма заказа:
-              <strong class="basket-footer__text--bold basket-footer__text--bright-orange">
-                900 ₽
-              </strong>
-            </p>
-          </div>
-          <div class="basket-footer__item">
-            <a href="./index.html" class="btn btn--large btn--outline-soft-silver basket-footer__btn">
-              <svg
-                  class="basket-footer__btn-icon"
-                  width="8"
-                  height="14"
-                  viewBox="0 0 8 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                    d="M7 13L1 6.93015L6.86175 1"
-                    stroke="#D3D3D3"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                />
-              </svg>
-              <span>
-                Вернуться назад
-              </span>
-            </a>
-            <button class="btn btn--large">
-              Оплатить сейчас
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+	</div>
+	<div class="basket-footer">
+		<div class="basket-footer__item">
+			<p class="basket-footer__text">
+				Всего пицц:
+				<strong class="basket-footer__text--bold">
+					3 шт.
+				</strong>
+			</p>
+			<p class="basket-footer__text">
+				Сумма заказа:
+				<strong class="basket-footer__text--bold basket-footer__text--bright-orange">
+					900 ₽
+				</strong>
+			</p>
+		</div>
+		<div class="basket-footer__item">
+			<a
+				href="./index.html"
+				class="btn btn--large btn--outline-soft-silver basket-footer__btn"
+			>
+				<svg
+					class="basket-footer__btn-icon"
+					width="8"
+					height="14"
+					viewBox="0 0 8 14"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M7 13L1 6.93015L6.86175 1"
+						stroke="#D3D3D3"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+				<span>
+					Вернуться назад
+				</span>
+			</a>
+			<button class="btn btn--large">
+				Оплатить сейчас
+			</button>
+		</div>
+	</div>
+</template>
+
+<header class="header">
+	<div class="container header__container">
+		<a
+			href="./index.html"
+			class="header__logo"
+		>
+			<img
+				src="./assets/images/icons/logo.svg"
+				alt="logo"
+				class="header__logo-icon"
+			/>
+			<div>
+				<h5 class="header__logo-title">
+					MAZZA PIZZA
+				</h5>
+				<p class="header__logo-text">
+					самая вкусная пицца во вселенной
+				</p>
+			</div>
+		</a>
+	</div>
+</header>
+<main class="main">
+	<section class="basket basket--empty">
+		<div class="container basket__container">
+			<h3 class="basket-title">
+				Корзина пустая 😕
+			</h3>
+			<p class="basket--empty__text">
+				Вероятней всего, вы не заказывали ещё пиццу.
+				Для того, чтобы заказать пиццу, перейди на главную страницу.
+			</p>
+			<img
+				src="./assets/images/basket/basket-empty.png"
+				alt="basket empty"
+				class="basket--empty__img"
+			/>
+			<a
+				href="./index.html"
+				class="btn btn--deep-gray basket--empty__btn"
+			>
+				Вернуться назад
+			</a>
+		</div>
+	</section>
+</main>
 </body>
 </html>

@@ -5,6 +5,40 @@
     width: 821px;
   }
 
+  &--empty{
+    min-height: 85vh;
+    @include center;
+
+    &__text{
+      margin-top: 10px;
+      @include font-size(18);
+      color: var(--gray-2);
+      line-height: 26.17px;
+      letter-spacing: 0.01em;
+    }
+
+    &__img{
+      margin-top: 47px;
+      width: 300px;
+      height: 255px;
+    }
+
+    &__btn{
+      margin-top: 74px;
+      height: 46px;
+      width: 210px;
+    }
+  }
+
+  &--empty &__container{
+    width: 547px;
+    height: 523px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &-header {
     display: flex;
     align-items: center;
@@ -171,5 +205,9 @@
         }
       }
     }
+  }
+
+  &__smile-icon{
+    @include size(32px);
   }
 }

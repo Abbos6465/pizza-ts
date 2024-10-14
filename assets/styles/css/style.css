@@ -22,6 +22,7 @@
   --bright-orange: #FE5F1E;
   --flame-orange: #EB5A1E;
   --gray: #8D8D8D;
+  --gray-2: #777777;
   --dark-gray: #181818;
   --deep-gray: #282828;
   --light-gray: #F9F9F9;
@@ -424,6 +425,37 @@ ul {
 .basket__container {
   width: 821px;
 }
+.basket--empty {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.basket--empty__text {
+  margin-top: 10px;
+  font-size: 1.125rem;
+  color: var(--gray-2);
+  line-height: 26.17px;
+  letter-spacing: 0.01em;
+}
+.basket--empty__img {
+  margin-top: 47px;
+  width: 300px;
+  height: 255px;
+}
+.basket--empty__btn {
+  margin-top: 74px;
+  height: 46px;
+  width: 210px;
+}
+.basket--empty .basket__container {
+  width: 547px;
+  height: 523px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .basket-header {
   display: flex;
   align-items: center;
@@ -571,6 +603,10 @@ ul {
 }
 .basket-footer__btn:hover path, .basket-footer__btn:focus .basket-footer__btn-icon path {
   stroke: var(--white);
+}
+.basket__smile-icon {
+  width: 32px;
+  height: 32px;
 }
 
 /*# sourceMappingURL=style.css.map */
