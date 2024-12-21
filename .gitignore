@@ -6,15 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-package-lock.json
-
 
 node_modules
 .DS_Store
 dist
+.vscode
 dist-ssr
 coverage
 *.local
+pnpm-lock.yaml
 
 /cypress/videos/
 /cypress/screenshots/
@@ -28,5 +28,3 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-
-*.tsbuildinfo
