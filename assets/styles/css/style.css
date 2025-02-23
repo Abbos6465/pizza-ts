@@ -187,6 +187,8 @@ ul {
 .dropdown-btn__arrow-icon {
   width: 10px;
   height: 5.62px;
+  transform: rotate(180deg);
+  transition: 0.2s all linear;
 }
 .dropdown-btn__text {
   font-weight: 700;
@@ -205,7 +207,11 @@ ul {
 .dropdown-menu {
   position: absolute;
   z-index: 10;
-  top: calc(100% + 8px);
+  top: -10%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.2s all linear;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -232,6 +238,15 @@ ul {
 }
 .dropdown-menu__btn:focus {
   outline-color: var(--bright-orange);
+}
+.dropdown--open .dropdown-btn__arrow-icon {
+  transform: rotate(0deg);
+}
+.dropdown--open .dropdown-menu {
+  top: calc(100% + 8px);
+  opacity: 1;
+  visibility: unset;
+  pointer-events: auto;
 }
 
 .header {
