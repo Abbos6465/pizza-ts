@@ -1,14 +1,5 @@
-import {
-    FetchProductsParamsType,
-    ProductCategoryType,
-    ProductDoughType,
-    ProductSizeType,
-    ProductType
-} from "./data.types";
-import {PRODUCT_DOUGH_TYPES, PRODUCT_SIZES} from "./data.enums.js";
-import {ModelType} from "../types";
-
-export const productSizes: ProductSizeType[] = [
+import { PRODUCT_DOUGH_TYPES, PRODUCT_SIZES } from "./data.enums.js";
+export const productSizes = [
     {
         key: PRODUCT_SIZES.SMALL,
         value: 26
@@ -22,8 +13,7 @@ export const productSizes: ProductSizeType[] = [
         value: 40
     }
 ];
-
-export const productDoughTypes: ProductDoughType[] = [
+export const productDoughTypes = [
     {
         key: PRODUCT_DOUGH_TYPES.THING,
         value: "тонкое"
@@ -33,16 +23,11 @@ export const productDoughTypes: ProductDoughType[] = [
         value: "традиционный"
     }
 ];
-
 const categoryNames = ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
-
-const categories: ProductCategoryType[] = categoryNames.map((name, idx) => ({id: idx + 1, name}));
-
+const categories = categoryNames.map((name, idx) => ({ id: idx + 1, name }));
 const filterNames = ["популярности", "по цене", "по алфавиту"];
-
-const filters: ModelType[] = filterNames.map((name, idx) => ({id: idx + 1, name}));
-
-export const products: ProductType[] = [
+const filters = filterNames.map((name, idx) => ({ id: idx + 1, name }));
+export const products = [
     {
         id: 1,
         category_id: 1,
@@ -164,46 +149,17 @@ export const products: ProductType[] = [
         }
     }
 ];
-
-const fetchProducts = (params: FetchProductsParamsType = {}): ProductType[] => {
-    let responseProducts: ProductType[] = [...products];
-
-    // Filter by category if category_id is provided
+const fetchProducts = (params = {}) => {
+    let responseProducts = [];
     if (params.category_id) {
-        responseProducts = responseProducts.filter(
-            product => product.category_id === params.category_id
-        );
+        responseProducts = products.filter(product => product.category_id === params.category_id);
     }
-
-    // Sort products based on filter_id
     if (params.filter_id) {
-        switch (params.filter_id) {
-            case 1: // Popular (default sorting)
-                responseProducts.sort((a, b) => a.id - b.id);
-                break;
-
-            case 2: // Sort by price (lowest to highest)
-                responseProducts.sort((a, b) => {
-                    // Get the lowest price across all dough types and sizes
-                    const getLowestPrice = (product: ProductType) => {
-                        return Math.min(...Object.values(product.prices).flatMap(doughType => Object.values(doughType)));
-                    };
-
-                    return getLowestPrice(a) - getLowestPrice(b);
-                });
-                break;
-
-            case 3: // Sort by name alphabetically
-                responseProducts.sort((a, b) =>
-                    a.name.localeCompare(b.name, "ru")
-                );
-                break;
+        if (params.filter_id === 1) {
         }
     }
-
     return responseProducts;
 };
-
 export default {
     categories,
     products,

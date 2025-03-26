@@ -1,19 +1,13 @@
-import {ModelType} from "../types";
+import {ModelType, ModelType2} from "../types";
+import {PRODUCT_DOUGH_TYPES, PRODUCT_SIZES} from "./data.enums";
 
-export enum PRODUCT_SIZES {
-    SMALL = 26,
-    MEDIUM = 30,
-    LARGE = 40
+
+
+export interface ProductSizeType extends ModelType2<PRODUCT_SIZES, number> {
 }
 
-export enum PRODUCT_DOUGH_TYPES {
-    THING = "thing",
-    TRADITIONAL = "traditional"
+export interface ProductDoughType extends ModelType2<PRODUCT_DOUGH_TYPES, string> {
 }
-
-export interface ProductSizeType extends ModelType<PRODUCT_SIZES>{}
-
-export interface ProductDoughType extends ModelType<PRODUCT_DOUGH_TYPES>{}
 
 export interface ProductPriceType {
     [key in PRODUCT_DOUGH_TYPES]: {
@@ -21,8 +15,18 @@ export interface ProductPriceType {
     };
 }
 
+export interface ProductCategoryType extends ModelType {
+}
+
 export interface ProductType extends ModelType<number> {
     category_id: number;
-    photo: string;
+    photo_id: number;
+    sizes: ProductSizeType[],
+    types: ProductDoughType[],
     prices: ProductPriceType
+}
+
+export interface FetchProductsParamsType {
+    category_id?: number;
+    filter_id?: number;
 }

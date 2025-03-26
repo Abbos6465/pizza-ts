@@ -1,0 +1,11 @@
+export var PRODUCT_SIZES;
+(function (PRODUCT_SIZES) {
+    PRODUCT_SIZES["SMALL"] = "small";
+    PRODUCT_SIZES["MEDIUM"] = "medium";
+    PRODUCT_SIZES["LARGE"] = "large";
+})(PRODUCT_SIZES || (PRODUCT_SIZES = {}));
+export var PRODUCT_DOUGH_TYPES;
+(function (PRODUCT_DOUGH_TYPES) {
+    PRODUCT_DOUGH_TYPES["THING"] = "thing";
+    PRODUCT_DOUGH_TYPES["TRADITIONAL"] = "traditional";
+})(PRODUCT_DOUGH_TYPES || (PRODUCT_DOUGH_TYPES = {}));

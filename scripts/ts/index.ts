@@ -1,10 +1,9 @@
 import {ModelType} from "./types";
 import {$, $$, createElement} from "./utils/pulign.js";
 import query from "./utils/query/query.js";
+import data from "./data/index.js";
 
 // ==> categories start <== //
-
-const categoryNames = ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
 
 interface CategoryType extends Omit<ModelType, "id"> {
     id: "all" | number;
@@ -12,14 +11,19 @@ interface CategoryType extends Omit<ModelType, "id"> {
 
 const categories: CategoryType[] = [
     {id: "all", name: "Все"},
-    ...categoryNames.map((name, idx) => ({id: idx + 1, name}))
+    ...data.categories
 ];
 
 const categoryIdKey = "category_id";
 
 const defaultCategoryId = "all";
 
-let activeCategoryId: string | number = defaultCategoryId;
+const activeCategory: ModelType<string | number> = {
+    id: defaultCategoryId as number | string,
+    get name() {
+        return categories.find((category) => category.id === this.id)?.name || "";
+    }
+};
 
 const setCategory = () => {
     const queryCategoryId = query.get({
@@ -28,10 +32,16 @@ const setCategory = () => {
         type: "number"
     });
 
-    activeCategoryId = queryCategoryId ?? defaultCategoryId;
+    activeCategory.id = queryCategoryId ?? defaultCategoryId;
 
-
+    setActiveCategoryName();
     setCategoryBtns(".intro__filter-btns", categories);
+};
+
+const setActiveCategoryName = () => {
+    const introTitle = $<HTMLHeadingElement>(".intro-title");
+    if (!introTitle) return;
+    introTitle.innerHTML = `${activeCategory.name} пиццы`;
 };
 
 const setCategoryBtns = (containerSelector: string, categories: CategoryType[]) => {
@@ -43,7 +53,7 @@ const setCategoryBtns = (containerSelector: string, categories: CategoryType[]) 
     categories.forEach(({id, name}) => {
         const btn = createElement<HTMLButtonElement>(
             "button",
-            `intro__filter-btn btn ${id == activeCategoryId ? "btn--deep-gray" : "btn--light-gray"}`,
+            `intro__filter-btn btn ${id === activeCategory.id ? "btn--deep-gray" : "btn--light-gray"}`,
             name
         );
         btn.dataset.id = String(id);
@@ -67,7 +77,8 @@ const changeCategory = (id?: string) => {
     if (!id) return;
 
     const parseId = +id || null;
-    activeCategoryId = parseId ?? defaultCategoryId;
+    activeCategory.id = parseId ?? defaultCategoryId;
+    setActiveCategoryName();
 
     query.set(categoryIdKey, parseId);
 };
@@ -77,15 +88,16 @@ const changeCategory = (id?: string) => {
 
 // ==> filters start <== //
 
-const filterNames = ["популярности", "по цене", "по алфавиту"];
-
-const filters: ModelType[] = filterNames.map((name, idx) => ({id: idx + 1, name}));
-
 const filterIdKey = "filter_id";
 
 const defaultFilterId = 1;
 
-let activeFilterId: number = defaultFilterId;
+const activeFilter: ModelType = {
+    id: defaultFilterId,
+    get name() {
+        return data.filters.find(filter => filter.id === this.id)?.name || "";
+    }
+};
 
 const setFilterDropdown = () => {
     const dropdown = $<HTMLDivElement>(".dropdown");
@@ -100,33 +112,32 @@ const setFilterDropdown = () => {
 
     if (!dropdownBtnActiveText) return;
 
-    // Sahifa yuklanganda filter_id ni query dan olish
-    activeFilterId = query.get({
+    // get filter id
+    activeFilter.id = query.get({
         key: filterIdKey,
         defaultValue: defaultFilterId,
         type: "number"
     }) as number;
 
     const updateActiveFilterText = () => {
-        const activeFilter = filters.find(filter => filter.id === activeFilterId);
-        if (activeFilter) dropdownBtnActiveText.textContent = activeFilter.name;
+        dropdownBtnActiveText.textContent = activeFilter.name;
     };
 
     updateActiveFilterText();
 
     dropdownMenu.innerHTML = "";
 
-    filters.forEach(({id, name}) => {
+    data.filters.forEach(({id, name}) => {
         const item = createElement<HTMLLIElement>("li", "dropdown-menu__item");
         const itemBtn = createElement<HTMLButtonElement>(
             "button",
-            `dropdown-menu__btn ${activeFilterId === id ? "dropdown-menu__btn--active" : ""}`,
+            `dropdown-menu__btn ${activeFilter.id === id ? "dropdown-menu__btn--active" : ""}`,
             name
         );
         itemBtn.dataset.id = String(id);
 
         itemBtn.addEventListener("click", () => {
-            activeFilterId = id;
+            activeFilter.id = id;
             query.set(filterIdKey, id);
 
             $$<HTMLButtonElement>(".dropdown-menu__btn", dropdownMenu).forEach(btn => {
