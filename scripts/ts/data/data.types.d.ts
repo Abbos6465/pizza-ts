@@ -2,7 +2,6 @@ import {ModelType, ModelType2} from "../types";
 import {PRODUCT_DOUGH_TYPES, PRODUCT_SIZES} from "./data.enums";
 
 
-
 export interface ProductSizeType extends ModelType2<PRODUCT_SIZES, number> {
 }
 
@@ -23,6 +22,8 @@ export interface ProductType extends ModelType<number> {
     photo_id: number;
     sizes: ProductSizeType[],
     types: ProductDoughType[],
+    active_size?: number;
+    active_type?: string;
     prices: ProductPriceType
 }
 

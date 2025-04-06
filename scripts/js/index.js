@@ -55,6 +55,7 @@ const changeCategory = (id) => {
     const parseId = +id || null;
     activeCategory.id = parseId ?? defaultCategoryId;
     setActiveCategoryName();
+    fetchProducts();
     query.set(categoryIdKey, parseId);
 };
 // ==> categories end <== //
@@ -100,6 +101,7 @@ const setFilterDropdown = () => {
                 btn.classList.toggle("dropdown-menu__btn--active", btn === itemBtn);
             });
             updateActiveFilterText();
+            fetchProducts();
             dropdown.classList.remove("dropdown--open");
         });
         item.appendChild(itemBtn);
@@ -110,7 +112,65 @@ const setFilterDropdown = () => {
     });
 };
 // ==> filters end <== //
+// ==> products starts <== //
+const fetchProducts = () => {
+    const params = {
+        filter_id: activeFilter.id
+    };
+    if (activeCategory.id !== defaultCategoryId)
+        params.category_id = activeCategory.id;
+    setProducts(data.fetchProducts(params));
+};
+const setProducts = (products) => {
+    const dataWrapper = $(".intro-body");
+    if (!dataWrapper)
+        return;
+    dataWrapper.innerHTML = "";
+    const dataFragment = document.createDocumentFragment();
+    products.forEach(product => {
+        const productCard = createElement("div", "intro__card");
+        const productImg = createElement("img", "intro__card-img");
+        productImg.alt = product.name;
+        productImg.src = `./assets/images/pizzas/pizza-${product.photo_id}.png`;
+        productCard.appendChild(productImg);
+        const productTitle = createElement("h6", "intro__card-title", product.name);
+        productCard.appendChild(productTitle);
+        const productCardBox = createElement("div", "intro__card__box");
+        const productTypesWrap = createElement("div", "intro__card__box-grid intro__card__box-grid-column-2");
+        product.types.forEach(type => {
+            const typeBtn = createElement("button", "intro__card__box-btn", type.value);
+            typeBtn.dataset.id = type.key;
+            if (type.value === product.active_type) {
+                typeBtn.classList.add("intro__card__box-btn--active");
+            }
+            typeBtn.addEventListener("click", () => {
+                product.active_type = type.value;
+            });
+            productTypesWrap.appendChild(typeBtn);
+        });
+        productCardBox.appendChild(productTypesWrap);
+        const productSizesWrap = createElement("div", "intro__card__box-grid intro__card__box-grid-column-3");
+        product.sizes.forEach(size => {
+            const sizeBtn = createElement("button", "intro__card__box-btn", `${size.value} см.`);
+            sizeBtn.dataset.id = size.key;
+            if (size.value === product.active_size) {
+                sizeBtn.classList.add("intro__card__box-btn--active");
+            }
+            sizeBtn.addEventListener("click", () => {
+                product.active_size = size.value;
+            });
+            productSizesWrap.appendChild(sizeBtn);
+        });
+        productCardBox.appendChild(productSizesWrap);
+        productCard.appendChild(productCardBox);
+        const productFooter = createElement("div", "intro__card-footer");
+        const productPrice = createElement("strong", "intro__card-subtitle", `от ${0} ₽`);
+        dataFragment.appendChild(productCard);
+    });
+    dataWrapper.appendChild(dataFragment);
+};
 document.addEventListener("DOMContentLoaded", () => {
     setCategory();
     setFilterDropdown();
+    fetchProducts();
 });

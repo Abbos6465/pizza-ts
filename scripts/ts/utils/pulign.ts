@@ -15,7 +15,7 @@ export const $$ = <T extends HTMLElement>(
 export const createElement = <T extends HTMLElement>(
     tagName: keyof HTMLElementTagNameMap,
     className?: string,
-    content?: string
+    content?: any
 ): T => {
     const newElement = document.createElement(tagName) as T;
     if (className) newElement.setAttribute("class", className);
