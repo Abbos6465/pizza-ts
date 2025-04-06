@@ -150,12 +150,30 @@ export const products = [
     }
 ];
 const fetchProducts = (params = {}) => {
-    let responseProducts = [];
+    let responseProducts = [...products];
+    // Filter by category if category_id is provided
     if (params.category_id) {
-        responseProducts = products.filter(product => product.category_id === params.category_id);
+        responseProducts = responseProducts.filter(product => product.category_id === params.category_id);
     }
+    // Sort products based on filter_id
     if (params.filter_id) {
-        if (params.filter_id === 1) {
+        switch (params.filter_id) {
+            case 1: // Popular (default sorting)
+                responseProducts.sort((a, b) => a.id - b.id);
+                break;
+            case 2: // Sort by price (lowest to highest)
+                responseProducts.sort((a, b) => {
+                    // Get the lowest price across all dough types and sizes
+                    const getLowestPrice = (product) => {
+                        return Math.min(...Object.values(product.prices)
+                            .flatMap(doughType => Object.values(doughType)));
+                    };
+                    return getLowestPrice(a) - getLowestPrice(b);
+                });
+                break;
+            case 3: // Sort by name alphabetically
+                responseProducts.sort((a, b) => a.name.localeCompare(b.name, "ru"));
+                break;
         }
     }
     return responseProducts;

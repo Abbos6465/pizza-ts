@@ -186,7 +186,8 @@ const fetchProducts = (params: FetchProductsParamsType = {}): ProductType[] => {
                 responseProducts.sort((a, b) => {
                     // Get the lowest price across all dough types and sizes
                     const getLowestPrice = (product: ProductType) => {
-                        return Math.min(...Object.values(product.prices).flatMap(doughType => Object.values(doughType)));
+                        return Math.min(...Object.values(product.prices)
+                            .flatMap(doughType => Object.values(doughType) as number[]));
                     };
 
                     return getLowestPrice(a) - getLowestPrice(b);
