@@ -9,7 +9,7 @@ export interface ProductDoughType extends ModelType2<PRODUCT_DOUGH_TYPES, string
 }
 
 export type ProductPriceType = {
-    [doughType in PRODUCT_DOUGH_TYPES]?: {
+    [doughType in PRODUCT_DOUGH_TYPES]: {
         [size in PRODUCT_SIZES]: number;
     };
 };

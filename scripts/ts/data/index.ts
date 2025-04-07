@@ -55,6 +55,11 @@ export const products: ProductType[] = [
                 [PRODUCT_SIZES.SMALL]: 395,
                 [PRODUCT_SIZES.MEDIUM]: 420,
                 [PRODUCT_SIZES.LARGE]: 450
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
+                [PRODUCT_SIZES.SMALL]: 395,
+                [PRODUCT_SIZES.MEDIUM]: 420,
+                [PRODUCT_SIZES.LARGE]: 450
             }
         }
     },
@@ -67,6 +72,11 @@ export const products: ProductType[] = [
         types: [...productDoughTypes],
         prices: {
             [PRODUCT_DOUGH_TYPES.THING]: {
+                [PRODUCT_SIZES.SMALL]: 400,
+                [PRODUCT_SIZES.MEDIUM]: 430,
+                [PRODUCT_SIZES.LARGE]: 460
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
                 [PRODUCT_SIZES.SMALL]: 400,
                 [PRODUCT_SIZES.MEDIUM]: 430,
                 [PRODUCT_SIZES.LARGE]: 460
@@ -85,6 +95,11 @@ export const products: ProductType[] = [
                 [PRODUCT_SIZES.SMALL]: 450,
                 [PRODUCT_SIZES.MEDIUM]: 480,
                 [PRODUCT_SIZES.LARGE]: 500
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
+                [PRODUCT_SIZES.SMALL]: 450,
+                [PRODUCT_SIZES.MEDIUM]: 480,
+                [PRODUCT_SIZES.LARGE]: 500
             }
         }
     },
@@ -97,6 +112,11 @@ export const products: ProductType[] = [
         types: [...productDoughTypes],
         prices: {
             [PRODUCT_DOUGH_TYPES.THING]: {
+                [PRODUCT_SIZES.SMALL]: 422,
+                [PRODUCT_SIZES.MEDIUM]: 455,
+                [PRODUCT_SIZES.LARGE]: 470
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
                 [PRODUCT_SIZES.SMALL]: 422,
                 [PRODUCT_SIZES.MEDIUM]: 455,
                 [PRODUCT_SIZES.LARGE]: 470
@@ -115,6 +135,11 @@ export const products: ProductType[] = [
                 [PRODUCT_SIZES.SMALL]: 395,
                 [PRODUCT_SIZES.MEDIUM]: 420,
                 [PRODUCT_SIZES.LARGE]: 450
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
+                [PRODUCT_SIZES.SMALL]: 395,
+                [PRODUCT_SIZES.MEDIUM]: 420,
+                [PRODUCT_SIZES.LARGE]: 450
             }
         }
     },
@@ -127,6 +152,11 @@ export const products: ProductType[] = [
         types: [...productDoughTypes],
         prices: {
             [PRODUCT_DOUGH_TYPES.THING]: {
+                [PRODUCT_SIZES.SMALL]: 400,
+                [PRODUCT_SIZES.MEDIUM]: 430,
+                [PRODUCT_SIZES.LARGE]: 460
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
                 [PRODUCT_SIZES.SMALL]: 400,
                 [PRODUCT_SIZES.MEDIUM]: 430,
                 [PRODUCT_SIZES.LARGE]: 460
@@ -145,6 +175,11 @@ export const products: ProductType[] = [
                 [PRODUCT_SIZES.SMALL]: 450,
                 [PRODUCT_SIZES.MEDIUM]: 480,
                 [PRODUCT_SIZES.LARGE]: 500
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
+                [PRODUCT_SIZES.SMALL]: 450,
+                [PRODUCT_SIZES.MEDIUM]: 480,
+                [PRODUCT_SIZES.LARGE]: 500
             }
         }
     },
@@ -157,6 +192,11 @@ export const products: ProductType[] = [
         types: [...productDoughTypes],
         prices: {
             [PRODUCT_DOUGH_TYPES.THING]: {
+                [PRODUCT_SIZES.SMALL]: 422,
+                [PRODUCT_SIZES.MEDIUM]: 455,
+                [PRODUCT_SIZES.LARGE]: 470
+            },
+            [PRODUCT_DOUGH_TYPES.TRADITIONAL]: {
                 [PRODUCT_SIZES.SMALL]: 422,
                 [PRODUCT_SIZES.MEDIUM]: 455,
                 [PRODUCT_SIZES.LARGE]: 470

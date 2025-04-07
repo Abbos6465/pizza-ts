@@ -3,7 +3,6 @@ import {$, $$, createElement} from "./utils/pulign.js";
 import query from "./utils/query/query.js";
 import data from "./data/index.js";
 import {FetchProductsParamsType, ProductType} from "./data/data.types";
-import {PRODUCT_DOUGH_TYPES} from "./data/data.enums";
 
 // ==> categories start <== //
 
@@ -203,6 +202,7 @@ const setProducts = (products: ProductType[]) => {
             }
             typeBtn.addEventListener("click", () => {
                 product.active_type = type.key;
+                sizeOrTypeClick(typeBtn, productTypesWrap);
             });
             productTypesWrap.appendChild(typeBtn);
         });
@@ -218,9 +218,20 @@ const setProducts = (products: ProductType[]) => {
             }
             sizeBtn.addEventListener("click", () => {
                 product.active_size = size.key;
+                sizeOrTypeClick(sizeBtn, productSizesWrap);
             });
             productSizesWrap.appendChild(sizeBtn);
         });
+
+        const sizeOrTypeClick = (btn: HTMLButtonElement, container: HTMLDivElement) => {
+            const itemBtns = $$<HTMLButtonElement>(".intro__card__box-btn", container);
+            if (!itemBtns.length) return;
+            itemBtns.forEach(itemBtn => {
+                itemBtn.classList.toggle("intro__card__box-btn--active", btn === itemBtn);
+            });
+            setProductPrice();
+        };
+
         productCardBox.appendChild(productSizesWrap);
 
         productCard.appendChild(productCardBox);
@@ -228,14 +239,48 @@ const setProducts = (products: ProductType[]) => {
         const productFooter = createElement<HTMLDivElement>("div", "intro__card-footer");
 
         const productPriceText = createElement("strong", "intro__card-subtitle");
-        if (product.active_type && product.active_size) {
-            const activeTypePrice = product.prices[product.active_type] || null;
-            if (activeTypePrice) {
-                const price = activeTypePrice[product.active_size];
-                productPriceText.innerHTML = `от ${price} ₽`;
+
+        const setProductPrice = () => {
+            if (product.active_type && product.active_size) {
+                const price = product.prices[product.active_type][product.active_size];
+                productPriceText.innerHTML = price ? `от ${price} ₽` : "";
             }
-        }
+        };
+
+        setProductPrice();
+
         productFooter.appendChild(productPriceText);
+
+        const productFooterBtn = createElement<HTMLButtonElement>("button", "btn btn--outline intro__card__btn btn--small");
+
+        // Create the SVG element
+        const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+        // Set attributes for the SVG
+        svgElement.setAttribute("class", "intro__card__btn-icon");
+        svgElement.setAttribute("width", "12");
+        svgElement.setAttribute("height", "12");
+        svgElement.setAttribute("viewBox", "0 0 12 12");
+        svgElement.setAttribute("fill", "none");
+        svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
+        // Create the path element
+        const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+        // Set attributes for the path
+        pathElement.setAttribute("d", "M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z");
+        pathElement.setAttribute("fill", "#EB5A1E");
+
+        // Append the path to the SVG
+        svgElement.appendChild(pathElement);
+
+        productFooterBtn.appendChild(svgElement);
+
+        const productFooterBtnText = createElement<HTMLSpanElement>("span", "intro__card__btn-text", "Добавить");
+
+        productFooterBtn.appendChild(productFooterBtnText);
+
+        productFooter.appendChild(productFooterBtn);
 
         productCard.appendChild(productFooter);
 
