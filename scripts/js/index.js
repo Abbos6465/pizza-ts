@@ -140,11 +140,11 @@ const setProducts = (products) => {
         product.types.forEach(type => {
             const typeBtn = createElement("button", "intro__card__box-btn", type.value);
             typeBtn.dataset.id = type.key;
-            if (type.value === product.active_type) {
+            if (type.key === product.active_type) {
                 typeBtn.classList.add("intro__card__box-btn--active");
             }
             typeBtn.addEventListener("click", () => {
-                product.active_type = type.value;
+                product.active_type = type.key;
             });
             productTypesWrap.appendChild(typeBtn);
         });
@@ -153,18 +153,27 @@ const setProducts = (products) => {
         product.sizes.forEach(size => {
             const sizeBtn = createElement("button", "intro__card__box-btn", `${size.value} см.`);
             sizeBtn.dataset.id = size.key;
-            if (size.value === product.active_size) {
+            if (size.key === product.active_size) {
                 sizeBtn.classList.add("intro__card__box-btn--active");
             }
             sizeBtn.addEventListener("click", () => {
-                product.active_size = size.value;
+                product.active_size = size.key;
             });
             productSizesWrap.appendChild(sizeBtn);
         });
         productCardBox.appendChild(productSizesWrap);
         productCard.appendChild(productCardBox);
         const productFooter = createElement("div", "intro__card-footer");
-        const productPrice = createElement("strong", "intro__card-subtitle", `от ${0} ₽`);
+        const productPriceText = createElement("strong", "intro__card-subtitle");
+        if (product.active_type && product.active_size) {
+            const activeTypePrice = product.prices[product.active_type] || null;
+            if (activeTypePrice) {
+                const price = activeTypePrice[product.active_size];
+                productPriceText.innerHTML = `от ${price} ₽`;
+            }
+        }
+        productFooter.appendChild(productPriceText);
+        productCard.appendChild(productFooter);
         dataFragment.appendChild(productCard);
     });
     dataWrapper.appendChild(dataFragment);

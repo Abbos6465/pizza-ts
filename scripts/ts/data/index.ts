@@ -203,8 +203,8 @@ const fetchProducts = (params: FetchProductsParamsType = {}): ProductType[] => {
     }
 
     return [...responseProducts.map(product => {
-        product.active_type = product.types[0].value;
-        product.active_size = product.sizes[0].value;
+        product.active_type = product.types[0].key;
+        product.active_size = product.sizes[0].key;
 
         return product;
     })];
