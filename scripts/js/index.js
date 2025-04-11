@@ -1,6 +1,7 @@
 import { $, $$, createElement } from "./utils/pulign.js";
 import query from "./utils/query/query.js";
 import data from "./data/index.js";
+import basket from "./basket/index.js";
 const categories = [
     { id: "all", name: "Все" },
     ...data.categories
@@ -120,6 +121,7 @@ const fetchProducts = () => {
     if (activeCategory.id !== defaultCategoryId)
         params.category_id = activeCategory.id;
     setProducts(data.fetchProducts(params));
+    basket.getBasket();
 };
 const setProducts = (products) => {
     const dataWrapper = $(".intro-body");
@@ -203,7 +205,26 @@ const setProducts = (products) => {
         svgElement.appendChild(pathElement);
         productFooterBtn.appendChild(svgElement);
         const productFooterBtnText = createElement("span", "intro__card__btn-text", "Добавить");
+        const productFooterBtnCircle = createElement("span", "intro__card__btn__circle");
         productFooterBtn.appendChild(productFooterBtnText);
+        productFooterBtn.appendChild(productFooterBtnCircle);
+        const setSelectedProductCount = () => {
+            const count = basket.getTotalCountById(product.id);
+            if (count) {
+                productFooterBtnCircle.textContent = String(count);
+                productFooterBtnCircle.style.display = "inline-block";
+            }
+            else {
+                productFooterBtnCircle.style.display = "none";
+            }
+        };
+        productFooterBtn.addEventListener("click", () => {
+            if (product.active_size && product.active_type) {
+                basket.addProduct(product.id, product.active_size, product.active_type);
+            }
+            setSelectedProductCount();
+        });
+        setSelectedProductCount();
         productFooter.appendChild(productFooterBtn);
         productCard.appendChild(productFooter);
         dataFragment.appendChild(productCard);

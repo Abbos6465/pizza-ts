@@ -89,6 +89,10 @@ ul {
   list-style-type: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .container {
   width: 1225px;
   margin: 0 auto;
@@ -249,6 +253,39 @@ ul {
   pointer-events: auto;
 }
 
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .header {
   background-color: var(--white);
   padding: 20px 0;

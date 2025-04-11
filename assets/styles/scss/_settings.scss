@@ -1,24 +1,24 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: var(--font-size-base);
 }
 
-.main{
+.main {
   margin-top: 91px;
 }
 
-section{
+section {
   padding: 40px 0;
 }
 
-input{
+input {
 
   &[type="number"]::-webkit-inner-spin-button,
   &[type="number"]::-webkit-outer-spin-button {
@@ -35,12 +35,12 @@ input{
   }
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
 
-button{
+button {
   cursor: pointer;
   border: inherit;
   background-color: inherit;
@@ -48,6 +48,10 @@ button{
   @include text-base;
 }
 
-ul{
+ul {
   list-style-type: none;
+}
+
+.hidden {
+  display: none;
 }

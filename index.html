@@ -13,74 +13,131 @@
     >
 </head>
 <body>
-<header class="header">
-    <div class="container header__container">
-        <a
-                href="./index.html"
-                class="header__logo"
-        >
-            <img
-                    src="./assets/images/icons/logo.svg"
-                    alt="logo"
-                    class="header__logo-icon"
-            />
-            <div>
-                <h5 class="header__logo-title">
-                    MAZZA PIZZA
-                </h5>
-                <p class="header__logo-text">
-                    самая вкусная пицца во вселенной
-                </p>
-            </div>
-        </a>
-        <a
-                href="basket.html"
-                class="btn header-btn"
-        >
+<div id="app">
+    <header class="header">
+        <div class="container header__container">
+            <a
+                    href="./index.html"
+                    class="header__logo"
+            >
+                <img
+                        src="./assets/images/icons/logo.svg"
+                        alt="logo"
+                        class="header__logo-icon"
+                />
+                <div>
+                    <h5 class="header__logo-title">
+                        MAZZA PIZZA
+                    </h5>
+                    <p class="header__logo-text">
+                        самая вкусная пицца во вселенной
+                    </p>
+                </div>
+            </a>
+            <a
+                    href="basket.html"
+                    class="btn header-btn"
+            >
           <span class="header-btn__content-first">
             520 ₽
           </span>
-            <div class="header-btn__content-last">
-                <img
-                        src="assets/images/icons/basket-light-icon.svg"
-                        alt="basket"
-                        class="header-btn__img"
-                />
-                3
-            </div>
-        </a>
-    </div>
-</header>
-<main class="main">
-    <section class="intro">
-        <div class="container intro__container">
-            <div class="intro-header">
-                <div class="intro__filter-btns">
+                <div class="header-btn__content-last">
+                    <img
+                            src="assets/images/icons/basket-light-icon.svg"
+                            alt="basket"
+                            class="header-btn__img"
+                    />
+                    3
                 </div>
-                <div class="dropdown">
-                    <button class="dropdown-btn">
-                        <img
-                                src="./assets/images/icons/arrow-icon.svg"
-                                alt="arrow"
-                                class="dropdown-btn__arrow-icon"
-                        />
-                        <span class="dropdown-btn__text">
+            </a>
+        </div>
+    </header>
+    <main class="main">
+        <section class="intro">
+            <div class="container intro__container">
+                <div class="intro-header">
+                    <div class="intro__filter-btns">
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-btn">
+                            <img
+                                    src="./assets/images/icons/arrow-icon.svg"
+                                    alt="arrow"
+                                    class="dropdown-btn__arrow-icon"
+                            />
+                            <span class="dropdown-btn__text">
                             Сортировка по:
                             <span class="dropdown-btn__active-text">
                             </span>
                         </span>
-                    </button>
-                    <ul class="dropdown-menu">
-                    </ul>
+                        </button>
+                        <ul class="dropdown-menu">
+                        </ul>
+                    </div>
+                </div>
+                <h4 class="intro-title">
+                </h4>
+                <div class="intro-body">
+                    <div class="intro__card">
+                        <img
+                                src="./assets/images/pizzas/pizza-1.png"
+                                alt="Чизбургер-пицца"
+                                class="intro__card-img"
+                        />
+                        <h6 class="intro__card-title">
+                            Чизбургер-пицца
+                        </h6>
+                        <div class="intro__card__box">
+                            <div class="intro__card__box-grid intro__card__box-grid-column-2">
+                                <button class="intro__card__box-btn intro__card__box-btn--active">
+                                    тонкое
+                                </button>
+                                <button class="intro__card__box-btn">
+                                    тонкое
+                                </button>
+                            </div>
+                            <div class="intro__card__box-grid intro__card__box-grid-column-3">
+                                <button class="intro__card__box-btn intro__card__box-btn--active">
+                                    26 см.
+                                </button>
+                                <button class="intro__card__box-btn">
+                                    30 см.
+                                </button>
+                                <button class="intro__card__box-btn">
+                                    40 см.
+                                </button>
+                            </div>
+                        </div>
+                        <div class="intro__card-footer">
+                            <strong class="intro__card-subtitle">от 395 ₽</strong>
+                            <button class="btn btn--outline intro__card__btn btn--small">
+                                <svg
+                                        class="intro__card__btn-icon"
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 12 12"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                            d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                                            fill="#EB5A1E"
+                                    />
+                                </svg>
+                                <span class="intro__card__btn-text">
+                                Добавить
+                            </span>
+                                <span class="intro__card__btn__circle">
+                                2
+                            </span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h4 class="intro-title">
-            </h4>
-            <div class="intro-body">
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
+</div>
 </body>
 <script
         type="module"
