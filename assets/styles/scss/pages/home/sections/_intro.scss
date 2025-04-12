@@ -118,7 +118,7 @@
         @include size(12px);
       }
 
-      &:hover, &:focus, &:active &-icon{
+      &--active, &:hover, &:focus, &:active &-icon{
         path{
           fill: var(--white);
         }
@@ -136,7 +136,7 @@
         @include transition-base;
       }
 
-      &:hover, &:focus, &:active{
+      &--active, &:hover, &:focus, &:active{
         .intro__card__btn__circle{
           background-color: var(--white);
           color: var(--bright-orange);

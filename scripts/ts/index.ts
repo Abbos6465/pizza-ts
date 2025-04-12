@@ -291,6 +291,8 @@ const setProducts = (products: ProductType[]) => {
             if (count) {
                 productFooterBtnCircle.textContent = String(count);
                 productFooterBtnCircle.style.display = "inline-block";
+                productFooterBtn.classList.add("intro__card__btn--active");
+                productFooterBtn.classList.remove("btn--outline");
             } else {
                 productFooterBtnCircle.style.display = "none";
             }
@@ -299,6 +301,7 @@ const setProducts = (products: ProductType[]) => {
         productFooterBtn.addEventListener("click", () => {
             if (product.active_size && product.active_type) {
                 basket.addProduct(product.id, product.active_size, product.active_type);
+                setBasketTotal();
             }
             setSelectedProductCount();
         });
@@ -315,7 +318,29 @@ const setProducts = (products: ProductType[]) => {
     dataWrapper.appendChild(dataFragment);
 };
 
+const setBasketTotal = () => {
+    const basketTotalBtn = $<HTMLButtonElement>("#basket-total");
+    if (!basketTotalBtn) return;
+
+    const setBasketTotalPrice = () => {
+        const basketTotalPriceEl = $<HTMLSpanElement>("#basket-total-price", basketTotalBtn);
+        if (!basketTotalPriceEl) return;
+        const totalPrice = data.fetchProductsPrice(basket.getBasket());
+        basketTotalPriceEl.innerHTML = `${totalPrice} ₽`;
+    };
+
+    const setBasketTotalCount = () => {
+        const basketTotalCountEl = $<HTMLSpanElement>("#basket-total-count", basketTotalBtn);
+        if (!basketTotalCountEl) return;
+        basketTotalCountEl.innerHTML = basket.getTotalCount().toString();
+    };
+
+    setBasketTotalPrice();
+    setBasketTotalCount();
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+    setBasketTotal();
     setCategory();
     setFilterDropdown();
     fetchProducts();

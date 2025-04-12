@@ -6,3 +6,8 @@ export interface BasketItem {
     type: PRODUCT_DOUGH_TYPES;
     count: number;
 }
+
+export interface BasketObjType {
+    map: Map<string, BasketItem>;
+    readonly array: BasketItem[];
+}

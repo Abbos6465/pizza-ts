@@ -449,7 +449,7 @@ ul {
   width: 12px;
   height: 12px;
 }
-.intro__card__btn:hover path, .intro__card__btn:focus path, .intro__card__btn:active .intro__card__btn-icon path {
+.intro__card__btn--active path, .intro__card__btn:hover path, .intro__card__btn:focus path, .intro__card__btn:active .intro__card__btn-icon path {
   fill: var(--white);
 }
 .intro__card__btn__circle {
@@ -466,7 +466,7 @@ ul {
   padding: 3px 7px;
   transition: 0.3s all;
 }
-.intro__card__btn:hover .intro__card__btn__circle, .intro__card__btn:focus .intro__card__btn__circle, .intro__card__btn:active .intro__card__btn__circle {
+.intro__card__btn--active .intro__card__btn__circle, .intro__card__btn:hover .intro__card__btn__circle, .intro__card__btn:focus .intro__card__btn__circle, .intro__card__btn:active .intro__card__btn__circle {
   background-color: var(--white);
   color: var(--bright-orange);
 }

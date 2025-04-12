@@ -7,6 +7,7 @@ import {
 } from "./data.types";
 import {PRODUCT_DOUGH_TYPES, PRODUCT_SIZES} from "./data.enums.js";
 import {ModelType} from "../types";
+import {BasketItem} from "../basket/basket";
 
 export const productSizes: ProductSizeType[] = [
     {
@@ -250,8 +251,18 @@ const fetchProducts = (params: FetchProductsParamsType = {}): ProductType[] => {
     })];
 };
 
+const fetchProductsPrice = (data: BasketItem[]): number =>
+    data.reduce((total, item) => {
+        const product = products.find(p => p.id === item.id);
+        if (!product) return total;
+
+        return total + product.prices[item.type][item.size] * item.count;
+    }, 0);
+
+
 export default {
     categories,
     filters,
-    fetchProducts
+    fetchProducts,
+    fetchProductsPrice
 };

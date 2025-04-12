@@ -222,8 +222,15 @@ const fetchProducts = (params = {}) => {
             return product;
         })];
 };
+const fetchProductsPrice = (data) => data.reduce((total, item) => {
+    const product = products.find(p => p.id === item.id);
+    if (!product)
+        return total;
+    return total + product.prices[item.type][item.size] * item.count;
+}, 0);
 export default {
     categories,
     filters,
-    fetchProducts
+    fetchProducts,
+    fetchProductsPrice
 };
