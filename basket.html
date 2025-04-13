@@ -38,17 +38,26 @@
             class="basket-body"
     >
     </div>
-    <div class="basket-footer">
+    <div
+            id="basket-footer"
+            class="basket-footer"
+    >
         <div class="basket-footer__item">
             <p class="basket-footer__text">
                 Всего пицц:
-                <strong class="basket-footer__text--bold">
+                <strong
+                        id="basket-count"
+                        class="basket-footer__text--bold"
+                >
                     3 шт.
                 </strong>
             </p>
             <p class="basket-footer__text">
                 Сумма заказа:
-                <strong class="basket-footer__text--bold basket-footer__text--bright-orange">
+                <strong
+                        id="basket-price"
+                        class="basket-footer__text--bold basket-footer__text--bright-orange"
+                >
                     900 ₽
                 </strong>
             </p>
@@ -166,7 +175,7 @@
             <h6 class="basket__box-title basket__box-price">
             </h6>
             <button
-                    class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn"
+                    class="btn basket__box__action-btn btn--outline-silver basket__box__close-btn basket__box-clear"
             >
                 <svg
                         class="basket__box__action-btn__icon"
