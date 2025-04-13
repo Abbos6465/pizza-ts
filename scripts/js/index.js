@@ -1,4 +1,4 @@
-import { $, $$, createElement } from "./utils/pulign.js";
+import { $, $$, createElement } from "./utils/pulign/index.js";
 import query from "./utils/query/query.js";
 import data from "./data/index.js";
 import basket from "./basket/index.js";
@@ -121,7 +121,6 @@ const fetchProducts = () => {
     if (activeCategory.id !== defaultCategoryId)
         params.category_id = activeCategory.id;
     setProducts(data.fetchProducts(params));
-    basket.getBasket();
 };
 const setProducts = (products) => {
     const dataWrapper = $(".intro-body");

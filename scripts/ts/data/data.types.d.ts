@@ -30,4 +30,5 @@ export interface ProductType extends ModelType<number> {
 export interface FetchProductsParamsType {
     category_id?: number;
     filter_id?: number;
+    ids?: number[];
 }

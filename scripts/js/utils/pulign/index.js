@@ -12,3 +12,7 @@ export const createElement = (tagName, className, content) => {
         newElement.innerHTML = content;
     return newElement;
 };
+export const getTemplateFragment = (selector) => {
+    const template = $(selector);
+    return template?.content.cloneNode(true);
+};

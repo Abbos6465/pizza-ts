@@ -1,4 +1,4 @@
-import { $ } from "./utils/pulign.js";
+import { $ } from "./utils/pulign/index.js";
 const loadingScreen = document.createElement("div");
 loadingScreen.id = "loading-screen";
 const spinner = document.createElement("div");

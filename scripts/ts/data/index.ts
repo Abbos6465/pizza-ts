@@ -243,6 +243,8 @@ const fetchProducts = (params: FetchProductsParamsType = {}): ProductType[] => {
         }
     }
 
+    if (params.ids) responseProducts.filter(product => params.ids?.includes(product.id));
+
     return [...responseProducts.map(product => {
         product.active_type = product.types[0].key;
         product.active_size = product.sizes[0].key;
@@ -250,6 +252,8 @@ const fetchProducts = (params: FetchProductsParamsType = {}): ProductType[] => {
         return product;
     })];
 };
+
+const fetchProduct = (id: number) => products.find(product => product.id === id) || null;
 
 const fetchProductsPrice = (data: BasketItem[]): number =>
     data.reduce((total, item) => {
@@ -264,5 +268,6 @@ export default {
     categories,
     filters,
     fetchProducts,
+    fetchProduct,
     fetchProductsPrice
 };

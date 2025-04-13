@@ -1,5 +1,5 @@
 import {ModelType} from "./types";
-import {$, $$, createElement} from "./utils/pulign.js";
+import {$, $$, createElement} from "./utils/pulign/index.js";
 import query from "./utils/query/query.js";
 import data from "./data/index.js";
 import {FetchProductsParamsType, ProductType} from "./data/data.types";
@@ -171,7 +171,6 @@ const fetchProducts = () => {
     };
     if (activeCategory.id !== defaultCategoryId) params.category_id = activeCategory.id as number;
     setProducts(data.fetchProducts(params));
-    basket.getBasket();
 };
 
 const setProducts = (products: ProductType[]) => {

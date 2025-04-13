@@ -96,7 +96,7 @@ const clearBasket = (): void => {
 };
 
 const getTotalCountById = (id: number): number => {
-    let total = 0;
+    let total =  0;
 
     for (const item of basketObj.map.values()) {
         if (item.id === id) {

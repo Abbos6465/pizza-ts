@@ -216,12 +216,15 @@ const fetchProducts = (params = {}) => {
                 break;
         }
     }
+    if (params.ids)
+        responseProducts.filter(product => params.ids?.includes(product.id));
     return [...responseProducts.map(product => {
             product.active_type = product.types[0].key;
             product.active_size = product.sizes[0].key;
             return product;
         })];
 };
+const fetchProduct = (id) => products.find(product => product.id === id) || null;
 const fetchProductsPrice = (data) => data.reduce((total, item) => {
     const product = products.find(p => p.id === item.id);
     if (!product)
@@ -232,5 +235,6 @@ export default {
     categories,
     filters,
     fetchProducts,
+    fetchProduct,
     fetchProductsPrice
 };
