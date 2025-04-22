@@ -211,4 +211,13 @@
   &__smile-icon {
     @include size(32px);
   }
+
+  &__success-modal {
+
+    &__title {
+      @include font-size(24);
+      font-weight: 600;
+      color: var(--green);
+    }
+  }
 }

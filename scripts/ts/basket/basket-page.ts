@@ -2,6 +2,7 @@ import {$, $$, getTemplateFragment} from "../utils/pulign/index.js";
 import basket from "./index.js";
 import data from "../data/index.js";
 import {ParentElType} from "../utils/pulign/pulign";
+import modal from "../modal.js";
 
 const getElements = () => ({
     basketSection: $("#basket-section"),
@@ -166,7 +167,30 @@ const renderBasketTemplate = (): void => {
 
     if (template) renderBasketContent(template);
     updateBasketSectionClass(!count);
-    if (count) initializeBasketHtml();
+    if (count) {
+        initializeBasketHtml();
+        saveProduct();
+    }
+};
+
+const saveProduct = () => {
+    const saveProductBtn = $("#save-product-btn");
+    if (!saveProductBtn) return;
+    saveProductBtn.addEventListener("click", () => {
+        handleSuccessModal();
+    });
+};
+
+const handleSuccessModal = () => {
+    const successModal = modal("#basket-success-modal");
+    if (!successModal) return;
+
+    successModal.openModal();
+    setTimeout(() => {
+        successModal.closeModal();
+        clearBasket();
+        window.location.replace("./")
+    }, 2000);
 };
 
 document.addEventListener("DOMContentLoaded", renderBasketTemplate);
